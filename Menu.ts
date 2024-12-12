@@ -1,4 +1,5 @@
 import readlinesync = require("readline-sync");
+import { colors } from './util/Colors';
 
 export function main(){
 
@@ -6,7 +7,8 @@ export function main(){
 
     while(true){
 
-        console.log("***********************************************************");
+        console.log(colors.bg.white, colors.fg.red,
+                    "***********************************************************");
         console.log("                                                           ");
         console.log("                       * CYNSEC BANK *                     ");
         console.log("                                                           ");
@@ -23,43 +25,73 @@ export function main(){
         console.log("                 9 - Sair                                  ");
         console.log("                                                           ");
         console.log("***********************************************************");
-        console.log("                                                           ");
+        console.log("                                                           ",
+        colors.reset);
 
         console.log("Entre com a opcao desejada: ");
         opcao = readlinesync.questionInt("");
 
         if (opcao == 9){
-            console.log("\n CynSec Bank - Mais fácil que nunca, mais perto de você. ")
+            console.log(colors.fg.bluestrong,
+                "\n CynSec Bank - Mais fácil que nunca, mais perto de você. ");
             sobre();
+            console.log(colors.reset, "");
             process.exit(0);
         }
         switch(opcao){
             case 1:
-                console.log("\n\nCriar Conta\n\n");
+                console.log(colors.fg.whitestrong,
+                    "\n\nCriar Conta\n\n", colors.reset);
+            
+                keyPress()
             break;
             case 2:
-                console.log("\n\nListar todas as Contas\n\n");
+                console.log(colors.fg.whitestrong,
+                    "\n\nListar todas as Contas\n\n", colors.reset);
+
+                keyPress()
             break;
             case 3:
-                console.log("\n\nConsultar dados da Conta - por numero\n\n");
+                console.log(colors.fg.whitestrong,
+                    "\n\nConsultar dados da Conta - por numero\n\n", colors.reset);
+            
+                keyPress()
             break;
             case 4:
-                console.log("\n\nAtualizar dados da Conta\n\n");
+                console.log(colors.fg.whitestrong,
+                    "\n\nAtualizar dados da Conta\n\n", colors.reset);
+            
+                keyPress()
             break;
             case 5:
-                console.log("\n\nApagar uma Conta\n\n");
+                console.log(colors.fg.whitestrong,
+                    "\n\nApagar uma Conta\n\n", colors.reset);
+
+                keyPress()
             break;
             case 6:
-                console.log("\n\nSaque\n\n");
+                console.log(colors.fg.whitestrong,
+                    "\n\nSaque\n\n", colors.reset);
+                
+                keyPress()
             break;
             case 7:
-                console.log("\n\nDeposito\n\n");
+                console.log(colors.fg.whitestrong,
+                    "\n\nDeposito\n\n", colors.reset);
+                
+                keyPress()
             break;
             case 8:
-                console.log("\n\nTransferencia entre Contas\n\n");
+                console.log(colors.fg.whitestrong,
+                    "\n\nTransferencia entre Contas\n\n", colors.reset);
+
+                keyPress()
             break;
             default:
-                console.log("\n\nOpcao Invalida!\n\n");
+                console.log(colors.fg.whitestrong,
+                    "\n\nOpcao Invalida!\n\n", colors.reset);
+                
+                keyPress()
             break;
         }
         
@@ -71,6 +103,11 @@ export function sobre(): void{
     console.log("Generation Brasil - andressas@genstudents.org");
     console.log("github.com/ZarathosFreya/");
     console.log("\n***********************************************************");
+}
+function keyPress(): void{
+    console.log(colors.reset, "");
+    console.log("\nPressione enter para continuar...");
+    readlinesync.prompt();
 }
 
 main();
