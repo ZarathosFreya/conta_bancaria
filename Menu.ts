@@ -62,7 +62,7 @@ export function main(){
                     console.log("Digite o Numero da Agencia: ");
                     agencia = readlinesync.questionInt('');
 
-                    console.log("Digite o Numero do Titular: ");
+                    console.log("Digite o Nome do Titular: ");
                     titular = readlinesync.question('');
 
                     console.log("Escolha o Tipo da Conta: ");
