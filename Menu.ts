@@ -106,12 +106,54 @@ export function main(){
             case 4:
                 console.log(colors.fg.whitestrong,
                     "\n\nAtualizar dados da Conta\n\n", colors.reset);
+
+                    console.log("Digite o numero da conta: ");
+                    numero = readlinesync.questionInt('');
+
+                    let conta = contas.buscarNoArray(numero);
+
+                    if(conta !== null){
+
+                    console.log("Digite o novo Numero da Agencia: ");
+                    agencia = readlinesync.questionInt('');
+
+                    console.log("Digite o novo Numero do Titular: ");
+                    titular = readlinesync.question('');
+
+                    console.log("Escolha o Tipo da Conta: ");
+                    tipo = readlinesync.keyInSelect(tipoContas, "", {cancel: false}) + 1;
+
+                    console.log("Digite o novo Saldo da Conta: ");
+                    saldo = readlinesync.questionFloat('');
+
+                    tipo= conta.tipo;
+
+                    switch(tipo){
+                        case 1:
+                            console.log("Digite o novo Limite da Conta: ");
+                            limite = readlinesync.questionFloat('');
+                            contas.atualizar(new ContaCorrente(limite, numero, agencia, tipo, titular, saldo))
+                        break;
+                        case 2:
+                            console.log("Digite o novo Dia do Aniversario da Poupanca: ");
+                            aniversario = readlinesync.questionInt('');
+                            contas.atualizar(new ContaPoupanca(aniversario, numero, agencia, tipo, titular, saldo))
+                        break;
+                    }
+                    }else{
+                        console.log("Conta não encontrada!");
+                    }
             
                 keyPress()
             break;
             case 5:
                 console.log(colors.fg.whitestrong,
                     "\n\nApagar uma Conta\n\n", colors.reset);
+
+                    console.log("Digite o numero da conta: ");
+                    numero = readlinesync.questionInt('');
+
+                    contas.deletar(numero);
 
                 keyPress()
             break;
